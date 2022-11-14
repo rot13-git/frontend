@@ -1,0 +1,21 @@
+.login2{
+    width: 30%;
+    margin: auto;
+    top: 50%;
+}
+
+.login{
+    display: flex;
+    position:fixed;
+    top:50%;
+    left: 40%;
+    transform: translateY(-50%);
+    width: 20%;
+    justify-content: center;
+    text-align: center;
+}
+
+.logincontent{
+    display: flex;
+    justify-content: center;
+}

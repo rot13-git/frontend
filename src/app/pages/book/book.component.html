@@ -1,0 +1,22 @@
+<mat-card class="home">
+    <mat-card-header style="display: flex;">
+        <mat-card-title>Elenco dei libri</mat-card-title>
+        <button (click)="nuovo()" mat-button mat-raised-button color="primary" style="display: flex; align-items:flex-end;left: 70%; margin-bottom: 1%;">Crea nuovo libro</button>
+    </mat-card-header>
+    
+    <mat-divider inset></mat-divider>
+   <br>
+   <mat-card-content class="home2" *ngIf="this.libri">
+    <div *ngFor="let libro of libri" style="margin-top:2%;" >
+        <app-libro-details [libro]="libro" ></app-libro-details>
+    </div>
+</mat-card-content>
+<mat-paginator #paginator
+    [length]="length"
+    [pageSize]="pageSize"
+    [pageIndex]="pageIndex"
+    [pageSizeOptions]="[5,10]"
+    (page) = "reloadData($event)"
+    >
+    </mat-paginator>
+</mat-card>

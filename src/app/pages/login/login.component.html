@@ -1,0 +1,75 @@
+<mat-card class="login">
+ 
+    <mat-card-content>
+      <mat-tab-group animationDuration="2000ms">
+        <mat-tab label="Accedi">
+          <form #loginForm="ngForm" >
+            <h2 >Effettua l'accesso</h2>
+            <mat-error *ngIf="invalidLogin">
+              Username e password non riconosciute<br>
+            </mat-error>
+            <mat-form-field>
+              <input matInput placeholder="Email" [(ngModel)]="username" name="username" required>
+              <mat-error>
+                Inserisci un username valido
+              </mat-error>
+            </mat-form-field>
+            <p>
+  
+            </p>
+            <mat-form-field>
+              <input matInput type="password" placeholder="Password" [(ngModel)]="password" name="password" required>
+              <mat-error>
+                Inserisci una password valida
+              </mat-error>
+            </mat-form-field>
+            <table width="100%">
+              <tr>
+                <td>
+                  <button mat-button (click)="handleLogin()" mat-raised-button color="primary" [disabled]="!loginForm.form.valid">Accedi</button>
+              
+                </td>
+              </tr>
+            </table>
+          </form>
+        </mat-tab>
+      
+        <mat-tab label="Registrati">
+          <form #registerForm="ngForm" >
+            <h2 >Registrati</h2>
+            <mat-error *ngIf="invalidRegister">
+              Username già presente<br>
+            </mat-error>
+            <mat-form-field>
+              <input matInput placeholder="Username" [(ngModel)]="username" name="username" required>
+              <mat-error>
+                Inserisci un username valido
+              </mat-error>
+            </mat-form-field>
+            <p>
+            </p>
+            <mat-form-field>
+              <input matInput placeholder="Nome Completo" [(ngModel)]="nomeCompleto" name="nomeCompleto" required>
+              <mat-error>
+                Inserisci un nome valido
+              </mat-error>
+            </mat-form-field>
+            <mat-form-field>
+              <input matInput type="password" placeholder="Password" [(ngModel)]="password" name="password" required>
+              <mat-error>
+                Inserisci una password valida
+              </mat-error>
+            </mat-form-field>
+            <table width="100%">
+              <tr>
+                <td>
+                    <button mat-button (click)="handleRegister()" mat-raised-button color="primary" [disabled]="!registerForm.form.valid">Registrati</button>     
+                </td>
+              </tr>
+            </table>
+          </form>
+        </mat-tab>
+      </mat-tab-group>
+    </mat-card-content>
+</mat-card>
+

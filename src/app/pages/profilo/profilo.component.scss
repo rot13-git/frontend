@@ -1,0 +1,26 @@
+.home{
+    position:fixed;
+    width: 70%;
+    left: 4%;
+}
+
+.box{
+    display: flex;
+    flex-direction: row;
+    min-width: 100%;
+}
+
+.box-left{
+    min-width: 85%;
+    align-content: flex-start;
+}
+.box-right{
+    
+   
+    
+    align-content: flex-end;
+}
+
+.sottolineato{
+    text-decoration: underline;
+}

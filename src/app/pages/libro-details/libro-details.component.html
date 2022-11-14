@@ -1,0 +1,11 @@
+<mat-card class="libro">
+    <mat-card-title-group>
+        <img *ngIf="dbImage" mat-card-lg-image [src]="dbImage">
+        <mat-card-title>{{libro.nome}}</mat-card-title>
+        <mat-card-subtitle>{{libro.autore}}</mat-card-subtitle>
+        
+      </mat-card-title-group>
+      <mat-card-content>
+        {{libro.descrizione }}
+      </mat-card-content>
+</mat-card>

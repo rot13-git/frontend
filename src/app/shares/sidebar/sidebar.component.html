@@ -1,0 +1,30 @@
+<mat-card class="sidebar">
+    <mat-card-header>
+        <div mat-card-avatar class="example-header-image"></div>
+        <mat-card-title>Bentornato, {{this.username}}</mat-card-title>
+        <mat-card-subtitle>{{utente.nomeCompleto}}</mat-card-subtitle>
+    </mat-card-header>
+    
+    <mat-divider inset></mat-divider>
+    <br>
+    <div class="menu_elem" (click)="router.navigate(['/']);">
+        <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="home" style="margin-top: 1%"></mat-icon>
+        <h2>Home</h2>
+    </div>
+    <div class="menu_elem" (click)="router.navigate(['/profilo']);">
+        <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="person" style="margin-top: 1%"></mat-icon>
+        <h2>Il mio profilo</h2>
+    </div>
+    <div class="menu_elem" (click)="router.navigate(['/post']);">
+        <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="feed" style="margin-top: 1%;"></mat-icon>
+        <h2>I miei post</h2>
+    </div>
+    <div class="menu_elem" (click)="router.navigate(['/book']);">
+        <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="books" style="margin-top: 1%;"></mat-icon>
+        <h2>Elenco dei libri</h2>
+    </div>
+    <mat-card-footer>
+        <mat-progress-bar mode="determinate" value="100"></mat-progress-bar>
+    </mat-card-footer>
+</mat-card>
+

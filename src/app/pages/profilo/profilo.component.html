@@ -1,0 +1,24 @@
+<mat-card class="home">
+    <mat-card-title>Il tuo profilo</mat-card-title>
+
+    <mat-divider inset></mat-divider>
+   <br>
+    <mat-card-content>
+        <div class="box">
+            <div class="box-left">
+                <h3>Nome Utente: {{utente.username}}</h3> 
+                <h3 style="margin-top:-1%;">Nome completo: {{utente.nomeCompleto}}</h3> 
+                <!-- <h3 style="margin-top:-1%;">Account creato in data </h3> -->
+                <button (click)="router.navigate(['/post']);" mat-button mat-raised-button color="secondary">Visualizza i tuoi post</button>
+            </div>
+            <div class="box-right">
+                <img mat-card-md-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" >
+                <p (click)="elimina()" class="sottolineato">Cambia immagine</p>
+            </div>
+            
+        </div>
+    </mat-card-content>
+    <mat-card-actions>
+        <button (click)="elimina()" mat-button mat-raised-button color="primary">Elimina Profilo</button>
+      </mat-card-actions>
+</mat-card>

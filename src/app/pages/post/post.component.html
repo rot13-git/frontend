@@ -1,0 +1,24 @@
+<mat-card class="home">
+    <mat-card-header style="display: flex;">
+        <mat-card-title style="min-width: 80%;">I miei post</mat-card-title>
+        <button (click)="nuovo()" mat-button mat-raised-button color="primary" style="display: flex; align-items:flex-end;left: 75%; margin-bottom: 1%;">Crea nuovo post</button>
+    </mat-card-header>
+    
+    <mat-divider inset></mat-divider>
+    <mat-card-content class="home2">
+        <div *ngFor="let contenuto of contenuti" style="margin-top:2%;" >
+            <app-contenuto-details [contenuto]="contenuto" [isPersonal]="true"></app-contenuto-details>
+        </div>
+    </mat-card-content>
+  
+
+   
+    <mat-paginator #paginator
+    [length]="length"
+    [pageSize]="pageSize"
+    [pageIndex]="pageIndex"
+    [pageSizeOptions]="[5,10]"
+    (page) = "reloadData($event)"
+    >
+    </mat-paginator>
+</mat-card>

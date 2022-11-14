@@ -1,0 +1,7 @@
+<p>
+    <mat-toolbar class="header">
+        <img src="../../../assets/img/logo.png" href="/" class="logo" (click)="router.navigate(['/']);">
+
+        <button *ngIf="isLoggedIn" mat-button class="logout" (click)="logout()">LogOut</button>
+    </mat-toolbar>
+</p>

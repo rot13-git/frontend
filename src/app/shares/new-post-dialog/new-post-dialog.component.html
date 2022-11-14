@@ -1,0 +1,53 @@
+<mat-dialog-content [formGroup]="modificaForm" *ngIf="this.libri">
+
+    <mat-form-field style="width:100%;" appearance="outline">
+      <mat-label>Titolo contenuto</mat-label>
+      <input matInput formControlName="titolo" placeholder="Titolo">
+    </mat-form-field>
+    <p></p>
+    <mat-form-field style="width:100%;" appearance="outline">
+      <mat-label>Elenco di tag</mat-label>
+      <mat-chip-list #chipList aria-label="Fruit selection">
+          <mat-chip *ngFor="let tag of tags" (removed)="remove(tag)">
+              {{tag}}
+              <button matChipRemove>
+                  <mat-icon>cancel</mat-icon>
+              </button>
+          </mat-chip>
+          <input matInput formControlName="tag"
+          [matChipInputFor]="chipList"
+          [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+          [matChipInputAddOnBlur]="addOnBlur"
+          (matChipInputTokenEnd)="add($event)">>
+      </mat-chip-list>
+      
+    </mat-form-field>
+    <p></p>
+    <mat-form-field style="width:100%;" appearance="outline">
+      <mat-label>Descrizione</mat-label>
+      <textarea matInput formControlName="contenuto"></textarea>
+    </mat-form-field>
+    <mat-divider></mat-divider>
+    <mat-form-field style="width:100%;" appearance="outline">
+        <mat-label>Ricerca Libro</mat-label>
+        <input type="text"
+            placeholder="Inserisci il nome del libro"
+            aria-label="Number"
+            matInput
+            formControlName="nomeLibro"
+            [matAutocomplete]="auto"
+            >
+        <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+            <mat-option (onSelectionChange)="selectOption($event)" *ngFor="let nome of filteredOptions | async"
+                [value]="nome.isbn">
+                {{nome.nome}}
+            </mat-option>
+        </mat-autocomplete>
+    </mat-form-field>
+
+    <h3 (click)="aggiungiLibro()" style="display:flex;align-content:center;text-decoration: underline;cursor: pointer;">Aggiungi un nuovo libro se non è presente in lista</h3>
+</mat-dialog-content>
+
+<div mat-dialog-actions>
+<button (click)="performCreazione()" mat-raised-button color="primary" [disabled]="!modificaForm.valid">Pubblica Post</button>
+</div>

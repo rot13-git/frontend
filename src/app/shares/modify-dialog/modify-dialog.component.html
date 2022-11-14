@@ -1,0 +1,35 @@
+<mat-dialog-content [formGroup]="modificaForm" >
+
+          <mat-form-field style="width:100%;" appearance="outline">
+            <mat-label>Titolo contenuto</mat-label>
+            <input matInput formControlName="titolo" placeholder="Titolo">
+          </mat-form-field>
+          <p></p>
+          <mat-form-field style="width:100%;" appearance="outline">
+            <mat-label>Elenco di tag</mat-label>
+            <mat-chip-list #chipList aria-label="Fruit selection">
+                <mat-chip *ngFor="let tag of tags" (removed)="remove(tag)">
+                    {{tag}}
+                    <button matChipRemove>
+                        <mat-icon>cancel</mat-icon>
+                    </button>
+                </mat-chip>
+                <input matInput formControlName="tag"
+                [matChipInputFor]="chipList"
+                [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                [matChipInputAddOnBlur]="addOnBlur"
+                (matChipInputTokenEnd)="add($event)">>
+            </mat-chip-list>
+            
+          </mat-form-field>
+          <p></p>
+          <mat-form-field style="width:100%;" appearance="outline">
+            <mat-label>Descrizione</mat-label>
+            <textarea matInput formControlName="contenuto">{{data.contenuto}}</textarea>
+          </mat-form-field>
+
+</mat-dialog-content>
+
+<div mat-dialog-actions>
+    <button (click)="performModifiche()" mat-raised-button color="primary" [disabled]="!modificaForm.valid">Applica Modifiche</button>
+</div>

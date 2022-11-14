@@ -1,0 +1,32 @@
+<div class="element-row">
+    <mat-card class="contenuto">
+        <mat-card-header>
+            <div mat-card-avatar class="example-header-image"></div>
+            <mat-card-title>{{contenuto.userEntity.username}}</mat-card-title>
+            <mat-card-subtitle>{{contenuto.userEntity.nomeCompleto}}</mat-card-subtitle>
+          </mat-card-header>
+        <mat-card-subtitle>
+            <mat-chip-list aria-label="Fish selection"><mat-chip color="primary" selected>{{contenuto.tag}}</mat-chip></mat-chip-list>
+        </mat-card-subtitle>
+        <mat-card-title>{{contenuto.titolo}}</mat-card-title>
+        <mat-card-content>
+            {{contenuto.contenuto}}
+        </mat-card-content>
+        <mat-card-actions *ngIf="isPersonal">
+            <mat-divider></mat-divider>
+            <button (click)="modifica()" mat-button mat-raised-button color="primary" style="margin-top:1%;">Modifica</button>
+            <button (click)="eliminate()" mat-button mat-raised-button color="primary">Elimina</button>
+        </mat-card-actions>
+    </mat-card>
+    
+    <mat-card class="libro">
+        <mat-card-title-group>
+            <mat-card-title>{{contenuto.libroEntity.nome}}</mat-card-title>
+            <mat-card-subtitle>{{contenuto.libroEntity.autore}}</mat-card-subtitle>
+            <img mat-card-sm-image [src]="dbImage" >
+          </mat-card-title-group>
+          <mat-card-content>
+            {{contenuto.libroEntity.descrizione | slice:0:256}} ...
+          </mat-card-content>
+    </mat-card>
+</div>

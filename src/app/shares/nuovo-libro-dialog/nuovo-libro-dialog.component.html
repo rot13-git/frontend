@@ -1,0 +1,46 @@
+<mat-dialog-content [formGroup]="creaForm">
+
+    <mat-form-field style="width:100%;" appearance="outline">
+        <mat-label>ISBN</mat-label>
+        <input matInput formControlName="isbn" placeholder="Titolo">
+      </mat-form-field>
+    <p></p>
+    <mat-form-field style="width:100%;" appearance="outline">
+      <mat-label>Titolo libro</mat-label>
+      <input matInput formControlName="titolo" placeholder="Titolo">
+    </mat-form-field>
+    <p></p>
+    <mat-form-field style="width:100%;" appearance="outline">
+        <mat-label>Autore</mat-label>
+        <input matInput formControlName="autore" placeholder="Autore">
+      </mat-form-field>
+    <p></p>
+    <mat-form-field style="width:100%;" appearance="outline">
+        <mat-label>Categoria</mat-label>
+        <input matInput formControlName="categoria" placeholder="Categoria">
+      </mat-form-field>
+    <p></p>
+    <mat-form-field style="width:100%;" appearance="outline">
+      <mat-label>Descrizione</mat-label>
+      <textarea matInput formControlName="descrizione"></textarea>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Carica una foto</mat-label>
+        <button mat-icon-button matPrefix (click)="f_input.click()">
+            <mat-icon>attach_file</mat-icon>
+        </button>
+        <input type="text" readonly matInput formControlName="display" />
+        <input  
+            type="file"
+            hidden
+            #f_input
+            (change)="onImageUpload($event)" 
+            formControlName="image"
+            accept="image/*"
+        >
+      </mat-form-field>
+</mat-dialog-content>
+
+<div mat-dialog-actions>
+<button (click)="performCreazione()" mat-raised-button color="primary" [disabled]="!creaForm.valid">Aggiungi Libro</button>
+</div>

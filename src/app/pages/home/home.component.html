@@ -1,0 +1,65 @@
+<mat-card class="home">
+    <mat-card-title>Nuovi Post</mat-card-title>
+    <mat-accordion class="example-headers-align" multi>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Effettua una ricerca
+            </mat-panel-title>
+            <mat-panel-description>
+              Ricerca per tag e libro
+              <mat-icon>search</mat-icon>
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+        <form [formGroup]="ricercaForm" *ngIf="this.libri">
+          <mat-form-field style="width:100%;" appearance="outline">
+            <mat-label>Ricerca Libro</mat-label>
+            <input type="text"
+                placeholder="Inserisci il nome del libro"
+                aria-label="Number"
+                matInput
+                formControlName="nomeLibro"
+                [matAutocomplete]="auto"
+                >
+            <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+                <mat-option (onSelectionChange)="selectOption($event)" *ngFor="let nome of filteredOptions | async"
+                    [value]="nome.nome">
+                    {{nome.nome}}
+                </mat-option>
+            </mat-autocomplete>
+          </mat-form-field>
+          <mat-form-field style="width: 100%; margin-left: 0;" appearance="outline">
+            <mat-label>Tag</mat-label>
+            <input type="text"
+                placeholder="Inserisci un tag"
+                matInput
+                formControlName="tag"
+            >
+        </mat-form-field>
+        <table>
+            <tr>
+                <td>
+                    <button (click)="performSearch()" mat-raised-button color="primary" [disabled]="!ricercaForm.valid">Ricerca</button>
+                </td>
+                <td>
+                    <button (click)="getResource()" mat-raised-button color="primary" >Reset</button>
+                </td>
+            </tr>
+        </table>
+    </form>
+        </mat-expansion-panel>
+    </mat-accordion>
+    <mat-divider inset></mat-divider>
+    <div *ngFor="let contenuto of contenuti" style="margin-top:2%;">
+        <app-contenuto-details [contenuto]="contenuto"></app-contenuto-details>
+    </div>
+    <mat-paginator #paginator
+    [length]="length"
+    [pageSize]="pageSize"
+    [pageIndex]="pageIndex"
+    [pageSizeOptions]="[5, 10, 25]"
+    (page) = "reloadData($event)"
+    >
+    </mat-paginator>
+</mat-card>
+
